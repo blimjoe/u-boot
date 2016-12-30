@@ -18,9 +18,9 @@
 						"name=SWAP,size=768MiB;name=BOOT_MSG,size=-;\"; "		\
 						"gpt write mmc 1 ${partitions};\0"
 
-#define CONFIG_BOOTCOMMAND		"run emmcboot;"
+#define CONFIG_BOOTCOMMAND		"usb start; tftp 0x80000 Image;"
 #define CONFIG_BOOTDELAY		1	/* autoboot after 1 seconds */
-
+#define CONFIG_BOOTARGS "console=ttyS5,115200n8 root=/dev/mmcblk0p3  rw panic=-1 fixrtc  rootwait"
 #define CONFIG_PWM_OWL
 
 /* video support */
@@ -78,40 +78,43 @@
 #define CONFIG_USB_DWC3_PHY_OWL
 #define CONFIG_USB_DWC3_OWL
 #define CONFIG_USB_DWC3
-#define CONFIG_USB_DWC3_GADGET
+/* #define CONFIG_USB_DWC3_GADGET */
 
 /* USB gadget */
-#define CONFIG_USB_GADGET
+/* #define CONFIG_USB_GADGET
 #define CONFIG_USB_GADGET_DUALSPEED
-#define CONFIG_USB_GADGET_VBUS_DRAW	2
+#define CONFIG_USB_GADGET_VBUS_DRAW	2 */
 
 /* Downloader */
-#define CONFIG_USBDOWNLOAD_GADGET
+/* #define CONFIG_USBDOWNLOAD_GADGET 
 #define CONFIG_G_DNL_VENDOR_NUM		0x18d1
 #define CONFIG_G_DNL_PRODUCT_NUM	0x0c02
-#define CONFIG_G_DNL_MANUFACTURER	"Actions-Semi"
+#define CONFIG_G_DNL_MANUFACTURER	"Actions-Semi" */
 
 /* Fastboot */
-#define CONFIG_FASTBOOT_FLASH
+/* #define CONFIG_FASTBOOT_FLASH
 #define CONFIG_FASTBOOT_FLASH_MMC_DEV 1
 #define CONFIG_CMD_FASTBOOT
 #define CONFIG_USB_FASTBOOT_BUF_ADDR    0x20000000
-#define CONFIG_USB_FASTBOOT_BUF_SIZE    0x40000000
+#define CONFIG_USB_FASTBOOT_BUF_SIZE    0x40000000 */
 
 /* UMS */
-#define CONFIG_USB_GADGET_MASS_STORAGE
+/* #define CONFIG_USB_GADGET_MASS_STORAGE
 #define CONFIG_CMD_USB_MASS_STORAGE
 #define CONFIG_G_DNL_UMS_VENDOR_NUM	0x10D6
-#define CONFIG_G_DNL_UMS_PRODUCT_NUM	0x0C02
+#define CONFIG_G_DNL_UMS_PRODUCT_NUM	0x0C02 */
 
 /* USB_ETHER */
-#define CONFIG_USB_ETHER
-#define CONFIG_USB_ETH_RNDIS
+/* #define CONFIG_USB_ETHER */
+/* #define CONFIG_USB_ETH_RNDIS */
+#define CONFIG_USB_HOST_ETHER
+#define CONFIG_USB_ETHER_ASIX
 #define CONFIG_USBNET_DEV_ADDR		"de:ad:be:ef:00:01"
 #define CONFIG_USBNET_HOST_ADDR	"de:ad:be:ef:00:02"
 #define CONFIG_LIB_RAND
 #define CONFIG_NET_RANDOM_ETHADDR
-
+#define CONFIG_USB_ETHER_ASIX88179
+#define CONFIG_USB_ETHER_MCS7830
 #define CONFIG_CMD_LINK_LOCAL
 #define CONFIG_CMD_PING
 
