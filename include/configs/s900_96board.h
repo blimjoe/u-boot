@@ -18,7 +18,7 @@
 						"name=SWAP,size=768MiB;name=BOOT_MSG,size=-;\"; "		\
 						"gpt write mmc 1 ${partitions};\0"
 
-#define CONFIG_BOOTCOMMAND		"usb start; tftp 0x80000 Image;"
+#define CONFIG_BOOTCOMMAND		"usb start; tftp 0x80000 Image; tftp 0x1ffffc0 uInitrd; tftp 0x10000000 s900_96board.dtb;"
 #define CONFIG_BOOTDELAY		1	/* autoboot after 1 seconds */
 #define CONFIG_BOOTARGS "console=ttyS5,115200n8 root=/dev/mmcblk0p3  rw panic=-1 fixrtc  rootwait"
 #define CONFIG_PWM_OWL
